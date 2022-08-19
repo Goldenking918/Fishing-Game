@@ -163,7 +163,7 @@ def start_countdown():
     global countdown
     if start:
         # Lowers the countdown by one every second
-        countdown -= 1
+        countdown -= 10
         game_countdown.configure(text=f"Time:{countdown}")
         root.after(1000, start_countdown)
         if countdown == 0:
@@ -205,12 +205,15 @@ def show_results():
         result.destroy()
 
     def save_name():
-        global name
+        global name, score
         # If the name inputted is above 15 deletes any extra characters
         if len(name_entry.get()) > 15:
             name_entry.delete(15, END)
 
         name = name_entry.get()
+
+        score = str(score)
+        score = score.zfill(3)
 
         if not name_entry.get():
             pass
